@@ -84,4 +84,47 @@ FROM mydatabase.customers AS c
 RIGHT JOIN mydatabase.orders AS o
 ON c.id = o.customer_id;
 
+/* Get all customers who haven't place any order. */
 
+-- LEFT ANTI Join
+
+SELECT *
+FROM mydatabase.customers AS c
+LEFT JOIN mydatabase.orders AS o
+ON c.id = o.customer_id
+WHERE o.customer_id IS NULL;
+
+/* Get all orders without matching customers. */
+
+-- RIGHT ANTI Join
+
+SELECT *
+FROM mydatabase.customers AS c
+RIGHT JOIN mydatabase.orders AS o
+ON c.id = o.customer_id
+WHERE c.id IS NULL;
+
+-- Using LEFT JOIN in place of Right.
+
+SELECT *
+FROM mydatabase.orders AS o 
+LEFT JOIN mydatabase.customers AS c
+ON c.id = o.customer_id
+WHERE c.id IS NULL;
+
+/* Get all customers along with their orders,
+but only for customers who have placed an order
+without using inner join. */
+
+SELECT * 
+FROM mydatabase.customers AS c
+LEFT JOIN mydatabase.orders AS o
+ON c.id = o.customer_id
+WHERE o.customer_id IS NOT NULL;
+
+
+/* Generate all possible combinations of customers and orders. */
+
+SELECT *
+From mydatabase.customers
+CROSS JOIN mydatabase.orders
