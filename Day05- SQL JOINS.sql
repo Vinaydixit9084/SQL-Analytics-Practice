@@ -1,5 +1,5 @@
 /* Retrieve all data from customers and orders 
-in two different results. */
+in two different results */
 
 SELECT *
 FROM mydatabase.customers;
@@ -8,7 +8,7 @@ SELECT *
 FROM mydatabase.orders;
 
 /* Get all customers along with their orders,
-but only for customers who have placed an order. */
+but only for customers who have placed an order */
 
 -- INNER JOIN 
 
@@ -127,4 +127,28 @@ WHERE o.customer_id IS NOT NULL;
 
 SELECT *
 From mydatabase.customers
-CROSS JOIN mydatabase.orders
+CROSS JOIN mydatabase.orders;
+
+/* Task: Using SalesDB, Retrieve details of all orders, along with the related customer, product and
+employee details. For each order, display:
+Order ID, Customer's name, Product name, Sales, Price, Sale's Person name.*/ 	
+
+-- Joining Multiple Tables
+
+SELECT 
+	o.OrderID,
+	o.Sales,
+    c.FirstName,
+    c.LastName,
+    p.Product AS ProductName,
+    p.Price,
+    e.FirstName AS EmployeeFirstname,
+    e.LastName AS EmployeeLastName
+FROM Orders AS o
+LEFT JOIN customers AS c
+ON o.customerID = c.customerID 
+LEFT JOIN products AS p
+ON o.productID = p.productID
+LEFT JOIN Employees AS e
+ON o.SalesPersonID = e.EmployeeID;
+
