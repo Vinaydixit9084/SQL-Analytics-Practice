@@ -27,7 +27,7 @@ LastName
 FROM Employees;
 
 
--- Aliases only follow first query 
+-- Aliases only follow first query.
 
 SELECT 
 customerid AS id,
