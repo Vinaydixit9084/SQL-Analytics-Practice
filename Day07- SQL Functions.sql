@@ -39,4 +39,52 @@ SELECT
 '123-456-7890' AS Phone No,
 REPLACE('123-456-7890', '-', '') AS Clean_ph;
 
+-- Calculate the length of each customer's first name.
 
+SELECT
+first_name,
+length(first_name) AS length_name
+FROM mydatabase.customers;
+
+-- Retrieve the first two characters of each first name.
+
+SELECT
+	first_name,
+    LEFT(first_name, 2) first_2_characters
+FROM mydatabase.customers;
+
+SELECT
+	first_name,
+    LEFT(TRIM(first_name), 2) first_2_characters
+FROM mydatabase.customers;
+
+-- Retrieve the last two characters of each first name.
+
+SELECT
+	first_name,
+    LEFT(TRIM(first_name), 2) first_2_characters,
+    RIGHT(first_name, 2) last_2_char
+FROM mydatabase.customers;
+
+-- Retrieve the list of customer's first names after removing the first character.
+
+SELECT
+	first_name,
+    substring(TRIM(first_name), 2, 4) AS sub_name
+FROM mydatabase.customers;
+
+-- ROUND function
+
+SELECT
+3.516,
+ROUND(3.516, 2) AS round_2,
+ROUND(3.516, 1) AS round_1,
+ROUND(3.516, 0) AS round_0;
+
+-- ABS funtion - returns positive number
+
+SELECT
+-10,
+ABS(-10)
+
+ 
