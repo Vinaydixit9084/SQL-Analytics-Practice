@@ -85,6 +85,39 @@ ROUND(3.516, 0) AS round_0;
 
 SELECT
 -10,
-ABS(-10)
+ABS(-10);
+
+-- DATE and TIME
+
+SELECT
+ORDERID,
+OrderDate,
+ShipDate,
+CreationTime
+FROM salesdb.orders;
+
+-- YEAR, Month and Day Functions
+
+SELECT
+ORDERID,
+CreationTime,
+year(CreationTime)  Year,
+month(CreationTime) Month,
+day(CreationTime) Day
+FROM salesdb.orders;
+
+-- MONTHNAME
+
+SELECT
+ORDERID,
+CreationTime,
+monthname('2025-02-06'),
+dayname('2025-02-06'),
+year(CreationTime)  Year,
+month(CreationTime) Month,
+day(CreationTime) Day
+FROM salesdb.orders;
+
+
 
  
