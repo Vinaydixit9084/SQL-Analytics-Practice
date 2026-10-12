@@ -118,6 +118,78 @@ month(CreationTime) Month,
 day(CreationTime) Day
 FROM salesdb.orders;
 
+-- ISNULL - Returns zero if salary has a value.
 
+SELECT 
+first_name, 
+ISNULL(salary) AS salary_missing
+FROM parks_and_recreation.employee_salary;
 
+-- COALESCE
+
+SELECT
+    first_name,
+    last_name,
+    occupation,
+    COALESCE(first_name, last_name, occupation) AS result
+FROM parks_and_recreation.employee_salary;
+
+-- Find the average score of the customers.
+
+SELECT
+customerid,
+Score,
+COALESCE(Score, 0)  Score2,
+AVG(Score) OVER () AvgScore
+FROM salesdb.customers;
+
+-- Display the full name of customers in a single field.
+-- by merging their first and last names,
+-- and add 10 bonus  points to each customer's score.
+
+SELECT
+    CustomerID,
+    FirstName,
+    LastName,
+    CONCAT(FirstName, ' ', COALESCE(LastName, '')) AS FullName,
+    Score,
+    Score + 10 AS BonusScore
+FROM salesdb.customers;
+
+-- IFNULL - It will return Null with 0.
+
+SELECT
+    CustomerID,
+    FirstName,
+    Score,
+    IFNULL(Score, 0) AS UpdatedScore
+FROM salesdb.customers;
+
+-- Select customers from lowest to highest scores,
+-- with nulls appearing list.
+
+SELECT 
+CustomerID,
+Score
+FROM salesdb.customers
+ORDER BY Score;
+
+-- NULL IF
+
+SELECT
+    CustomerID,
+    FirstName,
+    Score,
+    NULLIF(Score, 0) AS UpdatedScore
+FROM salesdb.customers;
+
+-- Identify the customers who have no scores.
+
+SELECT *
+FROM  salesdb.customers
+WHERE Score IS NULL;
+
+SELECT *
+FROM  salesdb.customers
+WHERE Score IS NOT NULL;
  
