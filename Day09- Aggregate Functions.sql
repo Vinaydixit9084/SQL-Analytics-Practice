@@ -15,7 +15,7 @@ SUM(sales) AS total_sales,
 AVG(sales) AS avg_sales
 FROM mydatabase.orders;
 
--- Find the highest sales of all orders.
+-- Find the highest sales of all orders..
 
 SELECT
 COUNT(*) AS total_nr_orders,
