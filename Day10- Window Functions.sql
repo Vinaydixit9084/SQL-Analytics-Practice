@@ -2,6 +2,7 @@
 
 -- Find the total sales accross all orders.
 
+
 SELECT
 SUM(Sales) AS total_sales
 from orders;
